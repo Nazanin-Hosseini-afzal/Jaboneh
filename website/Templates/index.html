@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>جابونه - پلتفرم ارتباط کارفرما و کارجو</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+        header {
+            background-color: #4a6baf;
+            color: white;
+            padding: 1rem;
+            text-align: center;
+        }
+        .logo {
+            font-size: 2rem;
+            font-weight: bold;
+        }
+        nav {
+            background-color: #3a5a9f;
+            padding: 0.5rem;
+        }
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+        }
+        nav li {
+            margin: 0 1rem;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        nav a:hover {
+            background-color: #2c4a8f;
+        }
+        .main-container {
+            display: flex;
+            min-height: 80vh;
+        }
+        .section {
+            flex: 1;
+            padding: 2rem;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        .section:hover {
+            transform: scale(1.02);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        .employer-section {
+            background-color: #e3f2fd;
+            border-left: 1px solid #ccc;
+        }
+        .jobseeker-section {
+            background-color: #e8f5e9;
+        }
+        .section-title {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            color: #2c3e50;
+        }
+        .section-description {
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+        .btn {
+            padding: 0.8rem 1.5rem;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .btn-primary {
+            background-color: #4a6baf;
+            color: white;
+        }
+        .btn-primary:hover {
+            background-color: #3a5a9f;
+        }
+        .btn-success {
+            background-color: #4caf50;
+            color: white;
+        }
+        .btn-success:hover {
+            background-color: #3d8b40;
+        }
+        footer {
+            background-color: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 1rem;
+            margin-top: auto;
+        }
+        
+        /* فرم‌های ثبت نام */
+        .form-container {
+            display: none;
+            max-width: 800px;
+            margin: 2rem auto;
+            padding: 2rem;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+        }
+        .form-title {
+            text-align: center;
+            margin-bottom: 2rem;
+            color: #2c3e50;
+        }
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+        }
+        .form-group input, 
+        .form-group select, 
+        .form-group textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+        .form-group textarea {
+            min-height: 100px;
+            resize: vertical;
+        }
+        .form-actions {
+            text-align: center;
+            margin-top: 2rem;
+        }
+        .step {
+            display: none;
+        }
+        .step.active {
+            display: block;
+        }
+        .progress-bar {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 2rem;
+            position: relative;
+        }
+        .progress-step {
+            width: 40px;
+            height: 40px;
+            background-color: #ddd;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            z-index: 2;
+        }
+        .progress-step.active {
+            background-color: #4a6baf;
+            color: white;
+        }
+        .progress-step.completed {
+            background-color: #4caf50;
+            color: white;
+        }
+        .progress-bar::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background-color: #ddd;
+            z-index: 1;
+            transform: translateY(-50%);
+        }
+        .progress-bar .progress {
+            position: absolute;
+            top: 50%;
+            left: 0;
+            height: 3px;
+            background-color: #4caf50;
+            z-index: 1;
+            transform: translateY(-50%);
+            transition: width 0.3s;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">جابونه</div>
+        <p>پلتفرم ارتباط کارفرما و کارجو</p>
+    </header>
+    
+    <nav>
+        <ul>
+            <li><a href="#home">خانه</a></li>
+            <li><a href="#about">درباره ما</a></li>
+            <li><a href="#contact">تماس با ما</a></li>
+            <li><a href="#login">ورود</a></li>
+        </ul>
+    </nav>
+    
+    <div class="main-container" id="home">
+        <div class="section employer-section" id="employer-section">
+            <h2 class="section-title">کارفرما هستید؟</h2>
+            <p class="section-description">
+                در بخش کارفرما می‌توانید اطلاعات شرکت خود را ثبت کنید، موقعیت‌های شغلی مورد نیاز را ایجاد نمایید و رزومه‌های ارسالی کارجویان را مدیریت کنید.
+            </p>
+            <button class="btn btn-primary" id="employer-btn">ورود به بخش کارفرما</button>
+        </div>
+        
+        <div class="section jobseeker-section" id="jobseeker-section">
+            <h2 class="section-title">کارجو هستید؟</h2>
+            <p class="section-description">
+                در بخش کارجو می‌توانید رزومه خود را بسازید، تست‌های شخصیت‌شناسی انجام دهید و پیشنهادهای شغلی متناسب با پروفایل خود را دریافت کنید.
+            </p>
+            <button class="btn btn-success" id="jobseeker-btn">ورود به بخش کارجو</button>
+        </div>
+    </div>
+    
+    <!-- فرم ثبت نام کارفرما -->
+    <div class="form-container" id="employer-form">
+        <h2 class="form-title">ثبت نام کارفرما</h2>
+        
+        <div class="progress-bar">
+            <div class="progress-step active">1</div>
+            <div class="progress-step">2</div>
+            <div class="progress-step">3</div>
+            <div class="progress"></div>
+        </div>
+        
+        <form id="employer-registration-form">
+            <!-- مرحله 1: اطلاعات شرکت -->
+            <div class="step active" id="employer-step1">
+                <div class="form-group">
+                    <label for="company-name">نام شرکت</label>
+                    <input type="text" id="company-name" required>
+                </div>
+                <div class="form-group">
+                    <label for="company-field">حوزه فعالیت شرکت</label>
+                    <select id="company-field" required>
+                        <option value="">انتخاب کنید</option>
+                        <option value="it">فناوری اطلاعات</option>
+                        <option value="finance">مالی و حسابداری</option>
+                        <option value="engineering">مهندسی</option>
+                        <option value="healthcare">سلامت و پزشکی</option>
+                        <option value="education">آموزش</option>
+                        <option value="other">سایر</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="company-size">تعداد کارکنان</label>
+                    <select id="company-size" required>
+                        <option value="">انتخاب کنید</option>
+                        <option value="1-10">1-10 نفر</option>
+                        <option value="11-50">11-50 نفر</option>
+                        <option value="51-200">51-200 نفر</option>
+                        <option value="201-500">201-500 نفر</option>
+                        <option value="500+">بیش از 500 نفر</option>
+                    </select>
+                </div>
+                <div class="form-actions">
+                    <button type="button" class="btn btn-primary next-step">مرحله بعد</button>
+                </div>
+            </div>
+            
+            <!-- مرحله 2: اطلاعات تماس -->
+            <div class="step" id="employer-step2">
+                <div class="form-group">
+                    <label for="company-phone">تلفن شرکت</label>
+                    <input type="tel" id="company-phone" required>
+                </div>
+                <div class="form-group">
+                    <label for="company-email">ایمیل شرکت</label>
+                    <input type="email" id="company-email" required>
+                </div>
+                <div class="form-group">
+                    <label for="company-website">وبسایت شرکت (اختیاری)</label>
+                    <input type="url" id="company-website">
+                </div>
+                <div class="form-group">
+                    <label for="company-address">آدرس شرکت</label>
+                    <textarea id="company-address" required></textarea>
+                </div>
+                <div class="form-actions">
+                    <button type="button" class="btn btn-primary prev-step">مرحله قبل</button>
+                    <button type="button" class="btn btn-primary next-step">مرحله بعد</button>
+                </div>
+            </div>
+            
+            <!-- مرحله 3: اطلاعات موقعیت شغلی -->
+            <div class="step" id="employer-step3">
+                <div class="form-group">
+                    <label for="job-title">عنوان موقعیت شغلی</label>
+                    <input type="text" id="job-title" required>
+                </div>
+                <div class="form-group">
+                    <label for="job-category">دسته‌بندی شغلی</label>
+                    <select id="job-category" required>
+                        <option value="">انتخاب کنید</option>
+                        <option value="development">توسعه نرم‌افزار</option>
+                        <option value="design">طراحی</option>
+                        <option value="marketing">بازاریابی</option>
+                        <option value="finance">مالی</option>
+                        <option value="hr">منابع انسانی</option>
+                        <option value="other">سایر</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="job-type">نوع همکاری</label>
+                    <select id="job-type" required>
+                        <option value="">انتخاب کنید</option>
+                        <option value="full-time">تمام وقت</option>
+                        <option value="part-time">پاره وقت</option>
+                        <option value="remote">دورکاری</option>
+                        <option value="internship">کارآموزی</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="job-description">توضیحات موقعیت شغلی</label>
+                    <textarea id="job-description" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="job-requirements">مهارت‌های مورد نیاز</label>
+                    <textarea id="job-requirements" required></textarea>
+                </div>
+                <div class="form-actions">
+                    <button type="button" class="btn btn-primary prev-step">مرحله قبل</button>
+                    <button type="submit" class="btn btn-success">ثبت نهایی</button>
+                </div>
+            </div>
+        </form>
+    </div>
+    
+    <!-- فرم ثبت نام کارجو -->
+    <div class="form-container" id="jobseeker-form">
+        <h2 class="form-title">ثبت نام کارجو</h2>
+        
+        <div class="progress-bar">
+            <div class="progress-step active">1</div>
+            <div class="progress-step">2</div>
+            <div class="progress-step">3</div>
+            <div class="progress-step">4</div>
+            <div class="progress"></div>
+        </div>
+        
+        <form id="jobseeker-registration-form">
+            <!-- مرحله 1: اطلاعات شخصی -->
+            <div class="step active" id="jobseeker-step1">
+                <div class="form-group">
+                    <label for="full-name">نام کامل</label>
+                    <input type="text" id="full-name" required>
+                </div>
+                <div class="form-group">
+                    <label for="birth-date">تاریخ تولد</label>
+                    <input type="date" id="birth-date" required>
+                </div>
+                <div class="form-group">
+                    <label for="gender">جنسیت</label>
+                    <select id="gender" required>
+                        <option value="">انتخاب کنید</option>
+                        <option value="male">مرد</option>
+                        <option value="female">زن</option>
+                        <option value="other">سایر</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="phone">تلفن همراه</label>
+                    <input type="tel" id="phone" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">ایمیل</label>
+                    <input type="email" id="email" required>
+                </div>
+                <div class="form-actions">
+                    <button type="button" class="btn btn-primary next-step">مرحله بعد</button>
+                </div>
+            </div>
+            
+            <!-- مرحله 2: اطلاعات تحصیلی و شغلی -->
+            <div class="step" id="jobseeker-step2">
+                <div class="form-group">
+                    <label for="education-level">مدرک تحصیلی</label>
+                    <select id="education-level" required>
+                        <option value="">انتخاب کنید</option>
+                        <option value="diploma">دیپلم</option>
+                        <option value="associate">فوق دیپلم</option>
+                        <option value="bachelor">لیسانس</option>
+                        <option value="master">فوق لیسانس</option>
+                        <option value="phd">دکترا</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="major">رشته تحصیلی</label>
+                    <input type="text" id="major" required>
+                </div>
+                <div class="form-group">
+                    <label for="work-experience">سابقه کار (سال)</label>
+                    <input type="number" id="work-experience" min="0" required>
+                </div>
+                <div class="form-group">
+                    <label for="skills">مهارت‌ها (با کاما جدا کنید)</label>
+                    <textarea id="skills" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="resume">رزومه (اختیاری)</label>
+                    <input type="file" id="resume" accept=".pdf,.doc,.docx">
+                </div>
+                <div class="form-actions">
+                    <button type="button" class="btn btn-primary prev-step">مرحله قبل</button>
+                    <button type="button" class="btn btn-primary next-step">مرحله بعد</button>
+                </div>
+            </div>
+            
+            <!-- مرحله 3: تست شخصیت شناسی -->
+            <div class="step" id="jobseeker-step3">
+                <h3>تست شخصیت شناسی (MBTI)</h3>
+                <p>لطفاً به سوالات زیر با دقت پاسخ دهید:</p>
+                
+                <div class="form-group">
+                    <label>1. در مهمانی‌ها معمولاً:</label>
+                    <select>
+                        <option value="">انتخاب کنید</option>
+                        <option value="e">با افراد زیادی صحبت می‌کنم و انرژی می‌گیرم</option>
+                        <option value="i">با چند نفر محدود صحبت می‌کنم و ترجیح می‌دهم زمان کمتری را در جمع بگذرانم</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label>2. هنگام تصمیم‌گیری بیشتر:</label>
+                    <select>
+                        <option value="">انتخاب کنید</option>
+                        <option value="t">به منطق و واقعیت‌ها توجه می‌کنم</option>
+                        <option value="f">به احساسات و ارزش‌های شخصی توجه می‌کنم</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label>3. معمولاً:</label>
+                    <select>
+                        <option value="">انتخاب کنید</option>
+                        <option value="j">برنامه‌ریزی می‌کنم و دوست دارم کارها را از قبل سازماندهی کنم</option>
+                        <option value="p">انعطاف‌پذیر هستم و ترجیح می‌دهم گزینه‌هایم باز باشد</option>
+                    </select>
+                </div>
+                
+                <div class="form-actions">
+                    <button type="button" class="btn btn-primary prev-step">مرحله قبل</button>
+                    <button type="button" class="btn btn-primary next-step">مرحله بعد</button>
+                </div>
+            </div>
+            
+            <!-- مرحله 4: تنظیمات و پیشنهادات -->
+            <div class="step" id="jobseeker-step4">
+                <div class="form-group">
+                    <label for="job-preference">ترجیحات شغلی</label>
+                    <select id="job-preference" multiple>
+                        <option value="development">توسعه نرم‌افزار</option>
+                        <option value="design">طراحی</option>
+                        <option value="marketing">بازاریابی</option>
+                        <option value="finance">مالی</option>
+                        <option value="hr">منابع انسانی</option>
+                        <option value="education">آموزش</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="job-type-pref">نوع همکاری مورد نظر</label>
+                    <select id="job-type-pref">
+                        <option value="">هر نوع</option>
+                        <option value="full-time">تمام وقت</option>
+                        <option value="part-time">پاره وقت</option>
+                        <option value="remote">دورکاری</option>
+                        <option value="internship">کارآموزی</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="salary-expectation">حقوق مورد انتظار (به تومان)</label>
+                    <input type="number" id="salary-expectation" min="0">
+                </div>
+                <div class="form-group">
+                    <label for="location-pref">محل کار مورد نظر</label>
+                    <input type="text" id="location-pref">
+                </div>
+                <div class="form-actions">
+                    <button type="button" class="btn btn-primary prev-step">مرحله قبل</button>
+                    <button type="submit" class="btn btn-success">ثبت نهایی و دریافت پیشنهادات</button>
+                </div>
+            </div>
+        </form>
+    </div>
+    
+    <footer>
+        <p>تمامی حقوق برای سایت جابونه محفوظ است © ۱۴۰۲</p>
+    </footer>
+    
+    <script>
+        // نمایش فرم کارفرما
+        document.getElementById('employer-btn').addEventListener('click', function() {
+            document.getElementById('employer-form').style.display = 'block';
+            document.getElementById('jobseeker-form').style.display = 'none';
+            document.getElementById('home').style.display = 'none';
+        });
+        
+        // نمایش فرم کارجو
+        document.getElementById('jobseeker-btn').addEventListener('click', function() {
+            document.getElementById('jobseeker-form').style.display = 'block';
+            document.getElementById('employer-form').style.display = 'none';
+            document.getElementById('home').style.display = 'none';
+        });
+        
+        // مدیریت مراحل فرم کارفرما
+        const employerSteps = document.querySelectorAll('#employer-registration-form .step');
+        const employerProgressSteps = document.querySelectorAll('#employer-form .progress-step');
+        let currentEmployerStep = 0;
+        
+        document.querySelectorAll('#employer-registration-form .next-step').forEach(button => {
+            button.addEventListener('click', () => {
+                if (validateEmployerStep(currentEmployerStep)) {
+                    employerSteps[currentEmployerStep].classList.remove('active');
+                    employerProgressSteps[currentEmployerStep].classList.remove('active');
+                    employerProgressSteps[currentEmployerStep].classList.add('completed');
+                    
+                    currentEmployerStep++;
+                    
+                    employerSteps[currentEmployerStep].classList.add('active');
+                    employerProgressSteps[currentEmployerStep].classList.add('active');
+                    
+                    updateEmployerProgressBar();
+                }
+            });
+        });
+        
+        document.querySelectorAll('#employer-registration-form .prev-step').forEach(button => {
+            button.addEventListener('click', () => {
+                employerSteps[currentEmployerStep].classList.remove('active');
+                employerProgressSteps[currentEmployerStep].classList.remove('active');
+                
+                currentEmployerStep--;
+                
+                employerSteps[currentEmployerStep].classList.add('active');
+                employerProgressSteps[currentEmployerStep].classList.add('active');
+                
+                updateEmployerProgressBar();
+            });
+        });
+        
+        function validateEmployerStep(step) {
+            // در اینجا می‌توانید اعتبارسنجی فیلدهای هر مرحله را انجام دهید
+            return true;
+        }
+        
+        function updateEmployerProgressBar() {
+            const progress = document.querySelector('#employer-form .progress');
+            const percent = (currentEmployerStep / (employerSteps.length - 1)) * 100;
+            progress.style.width = `${percent}%`;
+        }
+        
+        // مدیریت مراحل فرم کارجو
+        const jobseekerSteps = document.querySelectorAll('#jobseeker-registration-form .step');
+        const jobseekerProgressSteps = document.querySelectorAll('#jobseeker-form .progress-step');
+        let currentJobseekerStep = 0;
+        
+        document.querySelectorAll('#jobseeker-registration-form .next-step').forEach(button => {
+            button.addEventListener('click', () => {
+                if (validateJobseekerStep(currentJobseekerStep)) {
+                    jobseekerSteps[currentJobseekerStep].classList.remove('active');
+                    jobseekerProgressSteps[currentJobseekerStep].classList.remove('active');
+                    jobseekerProgressSteps[currentJobseekerStep].classList.add('completed');
+                    
+                    currentJobseekerStep++;
+                    
+                    jobseekerSteps[currentJobseekerStep].classList.add('active');
+                    jobseekerProgressSteps[currentJobseekerStep].classList.add('active');
+                    
+                    updateJobseekerProgressBar();
+                }
+            });
+        });
+        
+        document.querySelectorAll('#jobseeker-registration-form .prev-step').forEach(button => {
+            button.addEventListener('click', () => {
+                jobseekerSteps[currentJobseekerStep].classList.remove('active');
+                jobseekerProgressSteps[currentJobseekerStep].classList.remove('active');
+                
+                currentJobseekerStep--;
+                
+                jobseekerSteps[currentJobseekerStep].classList.add('active');
+                jobseekerProgressSteps[currentJobseekerStep].classList.add('active');
+                
+                updateJobseekerProgressBar();
+            });
+        });
+        
+        function validateJobseekerStep(step) {
+            // در اینجا می‌توانید اعتبارسنجی فیلدهای هر مرحله را انجام دهید
+            return true;
+        }
+        
+        function updateJobseekerProgressBar() {
+            const progress = document.querySelector('#jobseeker-form .progress');
+            const percent = (currentJobseekerStep / (jobseekerSteps.length - 1)) * 100;
+            progress.style.width = `${percent}%`;
+        }
+        
+        // ارسال فرم‌ها
+        document.getElementById('employer-registration-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('اطلاعات کارفرما با موفقیت ثبت شد!');
+            // در اینجا می‌توانید اطلاعات را به سرور ارسال کنید
+        });
+        
+        document.getElementById('jobseeker-registration-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('اطلاعات کارجو با موفقیت ثبت شد! پیشنهادات شغلی برای شما ارسال خواهد شد.');
+            // در اینجا می‌توانید اطلاعات را به سرور ارسال کنید
+        });
+    </script>
+</body>
+</html>

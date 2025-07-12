@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>درباره ما - جابونه</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+        header {
+            background-color: #4a6baf;
+            color: white;
+            padding: 1rem;
+            text-align: center;
+        }
+        .logo {
+            font-size: 2rem;
+            font-weight: bold;
+        }
+        nav {
+            background-color: #3a5a9f;
+            padding: 0.5rem;
+        }
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+        }
+        nav li {
+            margin: 0 1rem;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        nav a:hover {
+            background-color: #2c4a8f;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+        .about-section {
+            background-color: white;
+            border-radius: 10px;
+            padding: 2rem;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+            margin-bottom: 2rem;
+        }
+        .section-title {
+            color: #4a6baf;
+            border-bottom: 2px solid #e3f2fd;
+            padding-bottom: 0.5rem;
+            margin-top: 0;
+        }
+        .mission-vision {
+            display: flex;
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+        .mission, .vision {
+            flex: 1;
+            background-color: #f9f9f9;
+            padding: 1.5rem;
+            border-radius: 8px;
+            border-top: 4px solid #4a6baf;
+        }
+        .vision {
+            border-top-color: #4caf50;
+        }
+        .team {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        .team-member {
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 0 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+        .team-member:hover {
+            transform: translateY(-5px);
+        }
+        .member-image {
+            height: 200px;
+            background-color: #e3f2fd;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: #4a6baf;
+        }
+        .member-info {
+            padding: 1.5rem;
+            text-align: center;
+        }
+        .member-name {
+            margin: 0;
+            color: #2c3e50;
+        }
+        .member-position {
+            color: #4a6baf;
+            margin: 0.5rem 0;
+        }
+        .stats {
+            display: flex;
+            justify-content: space-around;
+            background-color: #4a6baf;
+            color: white;
+            padding: 2rem;
+            border-radius: 10px;
+            margin: 2rem 0;
+            text-align: center;
+        }
+        .stat-item {
+            flex: 1;
+        }
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin: 0;
+        }
+        .stat-label {
+            margin: 0.5rem 0 0;
+        }
+        footer {
+            background-color: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 1.5rem;
+            margin-top: 2rem;
+        }
+        @media (max-width: 768px) {
+            .mission-vision {
+                flex-direction: column;
+            }
+            .stats {
+                flex-direction: column;
+                gap: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">جابونه</div>
+        <p>پلتفرم ارتباط کارفرما و کارجو</p>
+    </header>
+    
+    <nav>
+        <ul>
+            <li><a href="index.html">خانه</a></li>
+            <li><a href="about.html" class="active">درباره ما</a></li>
+            <li><a href="contact.html">تماس با ما</a></li>
+            <li><a href="login.html">ورود</a></li>
+        </ul>
+    </nav>
+    
+    <div class="container">
+        <div class="about-section">
+            <h1 class="section-title">درباره جابونه</h1>
+            <p>
+                جابونه یک پلتفرم پیشرفته برای ارتباط کارفرمایان و کارجویان است که در سال 1404 با هدف تسهیل فرآیند استخدام و یافتن شغل مناسب تأسیس شد. ما با بهره‌گیری از تکنولوژی‌های روز و الگوریتم‌های هوشمند، تجربه‌ای متفاوت در زمینه کاریابی و استخدام ارائه می‌دهیم.
+            </p>
+            <p>
+                در جابونه، کارجویان می‌توانند با ساخت رزومه آنلاین و انجام تست‌های شخصیت‌شناسی، شغل‌های متناسب با مهارت‌ها و تیپ شخصیتی خود را پیدا کنند. از طرف دیگر، کارفرمایان می‌توانند با استفاده از ابزارهای پیشرفته غربالگری، بهترین کاندیداها را برای موقعیت‌های شغلی خود شناسایی کنند.
+            </p>
+            
+            <div class="mission-vision">
+                <div class="mission">
+                    <h3>ماموریت ما</h3>
+                    <p>
+                        ایجاد پلی مطمئن بین کارجویان و کارفرمایان با ارائه راهکارهای هوشمند و کاهش هزینه‌ها و زمان فرآیند استخدام. ما متعهد به ارائه خدمات باکیفیت و شفاف به تمامی کاربران خود هستیم.
+                    </p>
+                </div>
+                <div class="vision">
+                    <h3>چشم انداز ما</h3>
+                    <p>
+                        تبدیل شدن به برترین پلتفرم کاریابی در سطح منطقه با استفاده از فناوری‌های نوین و ارائه خدمات مبتنی بر هوش مصنوعی. ما به دنبال ایجاد تحولی اساسی در بازار کار ایران هستیم.
+                    </p>
+                </div>
+            </div>
+            
+            <div class="stats">
+                <div class="stat-item">
+                    <p class="stat-number">۵۰۰+</p>
+                    <p class="stat-label">شرکت همکار</p>
+                </div>
+                <div class="stat-item">
+                    <p class="stat-number">۱۰,۰۰۰+</p>
+                    <p class="stat-label">کارجوی فعال</p>
+                </div>
+                <div class="stat-item">
+                    <p class="stat-number">۲,۰۰۰+</p>
+                    <p class="stat-label">موقعیت شغلی</p>
+                </div>
+                <div class="stat-item">
+                    <p class="stat-number">۹۵%</p>
+                    <p class="stat-label">رضایت کاربران</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="about-section">
+            <h2 class="section-title">تیم جابونه</h2>
+            <p>
+                تیم جابونه متشکل از متخصصان با تجربه در حوزه‌های منابع انسانی، فناوری اطلاعات و روانشناسی صنعتی-سازمانی است که با همکاری یکدیگر این پلتفرم را توسعه داده‌اند.
+            </p>
+            
+            <div class="team">
+                <div class="team-member">
+                    <div class="member-image"></div>
+                    <div class="member-info">
+                        <h3 class="member-name">علیرضا محمدی</h3>
+                        <p class="member-position">مدیرعامل و بنیانگذار</p>
+                        <p>کارشناس ارشد مدیریت منابع انسانی با ۱۰ سال سابقه در حوزه استخدام و جذب</p>
+                    </div>
+                </div>
+                
+                <div class="team-member">
+                    <div class="member-image"></div>
+                    <div class="member-info">
+                        <h3 class="member-name">فاطمه رضایی</h3>
+                        <p class="member-position">مدیر فنی</p>
+                        <p>متخصص فناوری اطلاعات و توسعه دهنده نرم‌افزار با تمرکز بر هوش مصنوعی</p>
+                    </div>
+                </div>
+                
+                <div class="team-member">
+                    <div class="member-image"></div>
+                    <div class="member-info">
+                        <h3 class="member-name">دکتر امیر حسینی</h3>
+                        <p class="member-position">مشاور روانشناسی</p>
+                        <p>دکترای روانشناسی صنعتی و سازمانی و متخصص تست‌های شخصیت‌شناسی</p>
+                    </div>
+                </div>
+                
+                <div class="team-member">
+                    <div class="member-image"></div>
+                    <div class="member-info">
+                        <h3 class="member-name">نرگس کریمی</h3>
+                        <p class="member-position">طراح تجربه کاربری</p>
+                        <p>متخصص UX/UI با تمرکز بر بهبود تعامل کاربران با پلتفرم</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="about-section">
+            <h2 class="section-title">ارزش‌های ما</h2>
+            <ul>
+                <li><strong>شفافیت:</strong> اعتقاد داریم شفافیت در فرآیند استخدام منجر به تصمیم‌گیری‌های بهتر می‌شود.</li>
+                <li><strong>تخصص‌گرایی:</strong> تمام خدمات ما بر پایه دانش تخصصی و علمی ارائه می‌شود.</li>
+                <li><strong>نوآوری:</strong> همواره در تلاش برای ارائه راهکارهای نوین در حوزه کاریابی هستیم.</li>
+                <li><strong>انصاف:</strong> فرصت‌های شغلی را به صورت عادلانه در اختیار تمامی کارجویان قرار می‌دهیم.</li>
+                <li><strong>پشتیبانی:</strong> همراهی و پشتیبانی از کاربران در تمام مراحل استفاده از پلتفرم اولویت ماست.</li>
+            </ul>
+        </div>
+    </div>
+    
+    <footer>
+        <p>تمامی حقوق برای سایت جابونه محفوظ است © ۱۴۰۲</p>
+        <p>راه‌های ارتباطی: info@jabuneh.ir - ۰۲۱۸۸۸۸۸۸۸۸</p>
+    </footer>
+</body>
+</html>

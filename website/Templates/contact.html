@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تماس با ما - جابونه</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+        header {
+            background-color: #4a6baf;
+            color: white;
+            padding: 1rem;
+            text-align: center;
+        }
+        .logo {
+            font-size: 2rem;
+            font-weight: bold;
+        }
+        nav {
+            background-color: #3a5a9f;
+            padding: 0.5rem;
+        }
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+        }
+        nav li {
+            margin: 0 1rem;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        nav a:hover {
+            background-color: #2c4a8f;
+        }
+        nav a.active {
+            background-color: #1c3a7f;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+        .contact-section {
+            display: flex;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+        .contact-info {
+            flex: 1;
+            background-color: white;
+            border-radius: 10px;
+            padding: 2rem;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+        }
+        .contact-form {
+            flex: 2;
+            background-color: white;
+            border-radius: 10px;
+            padding: 2rem;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+        }
+        .section-title {
+            color: #4a6baf;
+            border-bottom: 2px solid #e3f2fd;
+            padding-bottom: 0.5rem;
+            margin-top: 0;
+        }
+        .info-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 1.5rem;
+        }
+        .info-icon {
+            font-size: 1.5rem;
+            color: #4a6baf;
+            margin-left: 1rem;
+            margin-top: 0.3rem;
+        }
+        .info-content h3 {
+            margin: 0 0 0.5rem;
+            color: #2c3e50;
+        }
+        .info-content p {
+            margin: 0;
+            color: #666;
+        }
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+            color: #2c3e50;
+        }
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+        .form-group textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+        .submit-btn {
+            background-color: #4a6baf;
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            font-size: 1rem;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .submit-btn:hover {
+            background-color: #3a5a9f;
+        }
+        .map-container {
+            margin-top: 2rem;
+            background-color: white;
+            border-radius: 10px;
+            padding: 1rem;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+        }
+        .map-placeholder {
+            background-color: #e3f2fd;
+            height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #4a6baf;
+            font-size: 1.2rem;
+            border-radius: 5px;
+        }
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+        .social-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: #4a6baf;
+            color: white;
+            border-radius: 50%;
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+        .social-link:hover {
+            background-color: #3a5a9f;
+        }
+        footer {
+            background-color: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 1.5rem;
+            margin-top: 2rem;
+        }
+        @media (max-width: 768px) {
+            .contact-section {
+                flex-direction: column;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="logo">جابونه</div>
+        <p>پلتفرم ارتباط کارفرما و کارجو</p>
+    </header>
+    
+    <nav>
+        <ul>
+            <li><a href="index.html">خانه</a></li>
+            <li><a href="about.html">درباره ما</a></li>
+            <li><a href="contact.html" class="active">تماس با ما</a></li>
+            <li><a href="login.html">ورود</a></li>
+        </ul>
+    </nav>
+    
+    <div class="container">
+        <div class="contact-section">
+            <div class="contact-info">
+                <h2 class="section-title">راه های ارتباطی</h2>
+                
+                <div class="info-item">
+                    <div class="info-icon"><i class="fas fa-map-marker-alt"></i></div>
+                    <div class="info-content">
+                        <h3>آدرس دفتر مرکزی</h3>
+                        <p>تهران، خیابان آزادی، بلوار اکبری، پلاک ۱۲۳، طبقه ۳</p>
+                    </div>
+                </div>
+                
+                <div class="info-item">
+                    <div class="info-icon"><i class="fas fa-phone"></i></div>
+                    <div class="info-content">
+                        <h3>تلفن تماس</h3>
+                        <p>۰۲۱-۸۸۸۸۸۸۸۸</p>
+                        <p>۰۹۱۲-۱۲۳۴۵۶۷ (پشتیبانی)</p>
+                    </div>
+                </div>
+                
+                <div class="info-item">
+                    <div class="info-icon"><i class="fas fa-envelope"></i></div>
+                    <div class="info-content">
+                        <h3>پست الکترونیک</h3>
+                        <p>info@jabuneh.ir</p>
+                        <p>support@jabuneh.ir (پشتیبانی)</p>
+                    </div>
+                </div>
+                
+                <div class="info-item">
+                    <div class="info-icon"><i class="fas fa-clock"></i></div>
+                    <div class="info-content">
+                        <h3>ساعات کاری</h3>
+                        <p>شنبه تا چهارشنبه: ۸:۳۰ تا ۱۶:۳۰</p>
+                        <p>پنجشنبه: ۸:۳۰ تا ۱۲:۳۰</p>
+                    </div>
+                </div>
+                
+                <div class="social-links">
+                    <a href="#" class="social-link"><i class="fab fa-telegram"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                </div>
+            </div>
+            
+            <div class="contact-form">
+                <h2 class="section-title">فرم تماس با ما</h2>
+                <form>
+                    <div class="form-group">
+                        <label for="name">نام کامل</label>
+                        <input type="text" id="name" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">پست الکترونیک</label>
+                        <input type="email" id="email" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="phone">تلفن همراه</label>
+                        <input type="tel" id="phone" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="subject">موضوع</label>
+                        <select id="subject" required>
+                            <option value="">انتخاب کنید</option>
+                            <option value="general">پرسش عمومی</option>
+                            <option value="employer">پرسش کارفرمایان</option>
+                            <option value="jobseeker">پرسش کارجویان</option>
+                            <option value="technical">مشکل فنی</option>
+                            <option value="cooperation">پیشنهاد همکاری</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="message">متن پیام</label>
+                        <textarea id="message" required></textarea>
+                    </div>
+                    
+                    <button type="submit" class="submit-btn">ارسال پیام</button>
+                </form>
+            </div>
+        </div>
+        
+        <div class="map-container">
+            <h2 class="section-title">موقعیت ما روی نقشه</h2>
+            <div class="map-placeholder">
+                <i class="fas fa-map-marked-alt"></i> نقشه دفتر مرکزی جابونه
+            </div>
+        </div>
+        
+        <div class="contact-info" style="margin-top: 2rem;">
+            <h2 class="section-title">پشتیبانی فنی</h2>
+            <p>برای گزارش مشکلات فنی سایت یا پیشنهادات بهبود می‌توانید از راه‌های زیر با تیم فنی ما در ارتباط باشید:</p>
+            
+            <div class="info-item">
+                <div class="info-icon"><i class="fas fa-bug"></i></div>
+                <div class="info-content">
+                    <h3>گزارش مشکل فنی</h3>
+                    <p>technical@jabuneh.ir</p>
+                </div>
+            </div>
+            
+            <div class="info-item">
+                <div class="info-icon"><i class="fas fa-lightbulb"></i></div>
+                <div class="info-content">
+                    <h3>پیشنهادات و ایده‌ها</h3>
+                    <p>ideas@jabuneh.ir</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <footer>
+        <p>تمامی حقوق برای سایت جابونه محفوظ است © ۱۴۰۲</p>
+        <p>راه‌های ارتباطی: info@jabuneh.ir - ۰۲۱۸۸۸۸۸۸۸۸</p>
+    </footer>
+</body>
+</html>
